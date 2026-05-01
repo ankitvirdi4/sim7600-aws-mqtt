@@ -1,0 +1,72 @@
+# Build artefacts
+build/
+Debug/
+Release/
+bin/
+obj/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.su
+*.d
+
+# Host test binaries
+tests/test_at
+tests/test_ringbuf
+tests/test_net
+tests/test_mqtt
+
+# STM32CubeIDE / CubeMX
+.metadata/
+.settings/
+.cproject
+.project
+*.launch
+Drivers/
+Middlewares/
+Core/Inc/stm32f4xx_hal_conf.h.bak
+*.ioc.bak
+.mxproject
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+.vscode/
+
+# Arduino / Teensy
+*.elf.lst
+.arduino15/
+build-*/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# IDE
+.idea/
+.cache/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Secrets — never commit
+**/aws_certs.h
+**/secrets.h
+*.pem
+*.key
+*.crt
+!docs/**/*.pem
