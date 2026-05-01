@@ -6,9 +6,9 @@ A portable C library for using SIMCom SIM7600 series modems with AWS IoT Core MQ
 
 Ankit set these on 2026 May 01. They govern every reply, tool call, and commit on this project. They take precedence over anything else in this document. Existing prose written before commit 792f77b is grandfathered; everything authored from this commit forward must comply.
 
-### Rule 0. No dashes
+### Rule 0. No dashes in prose
 
-Never emit the hyphen character, the en dash, or the em dash in any prose, markdown, commit message, or code comment authored on this project. Use asterisks for markdown bullets. Use commas, the words "and", "to", "or", or a rephrase, in place of dash connectors. Hyphens that are part of a literal identifier (filename, repo slug, package name, AT command token, CLI flag, URL, SPDX tag) are unavoidable and must be reproduced verbatim when quoting.
+Never emit the hyphen character, the en dash, or the em dash inside a sentence authored on this project. The rule applies to documentation prose (markdown, plain text docs), commit messages, and PR descriptions. The rule does not apply to source code, configuration files (Makefiles, .ioc, .yml), or comments inside source files; in those, write whatever C, C++, or shell idiom calls for. Use asterisks for markdown bullets. Use commas, the words "and", "to", "or", or a rephrase, in place of dash connectors. Hyphens that are part of a literal identifier (filename, repo slug, package name, AT command token, CLI flag, URL, SPDX tag) are unavoidable and must be reproduced verbatim when quoting.
 
 ### Rule 1. Think before coding
 
