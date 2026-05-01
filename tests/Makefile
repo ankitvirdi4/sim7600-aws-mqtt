@@ -27,12 +27,24 @@ test_ringbuf: test_ringbuf.c $(CORE_RINGBUF_SRC)
 test_at: test_at.c mock_port.c $(CORE_AT_SRC)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
+# arm-check verifies the freestanding subset of core/ compiles under
+# arm-none-eabi-gcc. sim7600_at.c uses string.h (strlen, strncmp,
+# strcmp, memcpy) which requires a C library (newlib or picolibc).
+# The bare arm-none-eabi-gcc formula on Homebrew does not bundle one,
+# so we exclude sim7600_at.c here and let the STM32 example build in
+# M2 (which links newlib-nano via CubeIDE) cover it.
+ARM_FREESTANDING_SRC := \
+    ../core/sim7600_port.h \
+    ../core/sim7600_ringbuf.h \
+    ../core/sim7600_at.h \
+    ../core/sim7600_ringbuf.c
+
 arm-check:
 	@if command -v $(ARMCC) >/dev/null 2>&1; then \
-	    echo "running arm cross compile check"; \
+	    echo "running arm cross compile check (freestanding subset)" && \
 	    $(ARMCC) -std=c99 -Wall -Wextra -Werror -Wno-unused-parameter \
-	        -I../core -fsyntax-only $(CORE_ALL_SRC); \
-	    echo "arm cross compile OK"; \
+	        -ffreestanding -I../core -fsyntax-only $(ARM_FREESTANDING_SRC) && \
+	    echo "arm cross compile (freestanding subset) OK"; \
 	else \
 	    echo "$(ARMCC) not installed; skipping cross compile check"; \
 	fi
