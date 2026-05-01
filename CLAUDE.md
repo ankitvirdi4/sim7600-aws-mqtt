@@ -2,6 +2,30 @@
 
 A portable C library for using SIMCom SIM7600 series modems with AWS IoT Core MQTT, with platform ports for STM32 (generic HAL API) and Teensy 4.1 (Arduino).
 
+## Mandatory rules
+
+Ankit set these on 2026 May 01. They govern every reply, tool call, and commit on this project. They take precedence over anything else in this document. Existing prose written before commit 792f77b is grandfathered; everything authored from this commit forward must comply.
+
+### Rule 0. No dashes
+
+Never emit the hyphen character, the en dash, or the em dash in any prose, markdown, commit message, or code comment authored on this project. Use asterisks for markdown bullets. Use commas, the words "and", "to", "or", or a rephrase, in place of dash connectors. Hyphens that are part of a literal identifier (filename, repo slug, package name, AT command token, CLI flag, URL, SPDX tag) are unavoidable and must be reproduced verbatim when quoting.
+
+### Rule 1. Think before coding
+
+State assumptions explicitly. If uncertain, ask. If multiple interpretations exist, present them; do not pick silently. If a simpler approach exists, say so and push back when warranted. If something is unclear, stop, name what is confusing, and ask.
+
+### Rule 2. Simplicity first
+
+Write the minimum code that solves the problem. No speculative features. No abstractions for code that has only one caller. No flexibility or configurability that was not requested. No error handling for impossible scenarios. If 200 lines could be 50, rewrite. Ask: would a senior engineer call this overcomplicated? If yes, simplify.
+
+### Rule 3. Surgical changes
+
+Touch only what you must. Do not improve adjacent code, comments, or formatting. Do not refactor things that are not broken. Match existing style even if you would do it differently. If unrelated dead code is noticed, mention it; do not delete it. Remove only orphans that the current change created. Every changed line must trace directly to the user request.
+
+### Rule 4. Goal driven execution
+
+Define success criteria; loop until verified. Transform vague tasks into verifiable goals: "add validation" becomes "write tests for invalid inputs, then make them pass"; "fix the bug" becomes "write a test that reproduces it, then make it pass"; "refactor X" becomes "ensure tests pass before and after". For multi step tasks, state a brief plan with a verify step per item. Strong success criteria allow independent looping; weak criteria require constant clarification.
+
 ## Goals (v1.0)
 
 - Connect SIM7600G-H to AWS IoT Core over native modem TLS.
